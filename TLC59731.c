@@ -120,27 +120,6 @@ static rmt_item32_t* tlc59731_getGrayscaleInRmtItem(uint8_t gs[3])
 	return rmtGrayscale;
 }
 
-static tlc59731_dbg_printRmtItem(rmt_item32_t* item, uint8_t count)
-{
-	ESP_LOGI("RMT-DEBUG: ", "%s", "started...");
-
-	if (item != NULL)
-	{
-		for (uint8_t i = 0; i < count; i++)
-		{
-			ESP_LOGI("RMT-DEBUG: ", "Content: %u %u %u %u", item[i].duration0,
-					item[i].level0, item[i].duration1, item[i].level1);
-		}
-	}
-	else
-	{
-		ESP_LOGI("RMT-DEBUG: ", "%s", "item is null NULL!");
-	}
-
-	ESP_LOGI("RMT-DEBUG: ", "%s", "ended...");
-
-}
-
 void tlc59731_init()
 {
 	gpio_set_direction(TLC59731_PIN, GPIO_MODE_OUTPUT);
