@@ -2,7 +2,7 @@
  * TLC59731.h
  *
  *  Created on: 14. sij 2019.
- *      Author: Admin
+ *      Author: Luka Culic-Viskota
  */
 
 #ifndef COMPONENTS_LEDDRIVER_INCLUDE_TLC59731_H_
@@ -24,11 +24,11 @@
 #define TLC59731_PIN 27
 #define TLC59731_T_CYCLE 50 //50us
 
-typedef struct{
+typedef struct {
 	uint8_t r;
 	uint8_t g;
 	uint8_t b;
-}ledRGB;
+} ledRGB;
 
 void tlc59731_init();
 void tlc59731_setGrayscale(ledRGB* gs, uint8_t countLEDs);
