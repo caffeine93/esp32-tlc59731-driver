@@ -21,8 +21,9 @@
 
 #define INTERVAL_US(us) ((us) / RMT_CHANNEL0_TICK_US)
 
+#define TLC59731_RMT_CHANNEL RMT_CHANNEL_0
 #define TLC59731_PIN 27
-#define TLC59731_T_CYCLE 50 //50us
+#define TLC59731_T_CYCLE 50 /* 50us */
 
 typedef struct {
 	uint8_t r;

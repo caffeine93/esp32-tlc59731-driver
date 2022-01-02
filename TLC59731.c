@@ -11,7 +11,7 @@ static rmt_config_t tlc59731_getRMTConfig()
 {
 	rmt_config_t rmtConfig;
 	rmtConfig.rmt_mode = RMT_MODE_TX;
-	rmtConfig.channel = RMT_CHANNEL_0;
+	rmtConfig.channel = TLC59731_RMT_CHANNEL;
 	rmtConfig.gpio_num = TLC59731_PIN;
 	rmtConfig.mem_block_num = 1;
 	rmtConfig.tx_config.loop_en = 0;
@@ -128,24 +128,15 @@ void tlc59731_setGrayscale(ledRGB* gs, uint8_t countLEDs)
 	rmt_item32_t rmtEOS = tlc59731_getEOSInRmtItem();
 	rmt_item32_t rmtGSLAT = tlc59731_getGSLATInRmtItem();
 
+	uint8_t tmpGS[3] = {0};
+
 	for (uint8_t i = 0; i < countLEDs; i++) {
 		memcpy(packet + (i * (64 + 1)), rmtWriteCmd,
 				sizeof(rmt_item32_t) * 8 * 2);
 
-		uint8_t tmpGS[3];
-		for (uint8_t j = 0; j < 3; j++) {
-			switch (j) {
-			case 0:
-				tmpGS[j] = gs[i].r;
-				break;
-			case 1:
-				tmpGS[j] = gs[i].g;
-				break;
-			case 2:
-				tmpGS[j] = gs[i].b;
-				break;
-			}
-		}
+		tmpGS[0] = gs[i].r;
+		tmpGS[1] = gs[i].g;
+		tmpGS[2] = gs[i].b;
 
 		rmt_item32_t* rmtGrayscale = tlc59731_getGrayscaleInRmtItem(tmpGS);
 		memcpy(packet + (i * (64 + 1) + 8 * 2), rmtGrayscale,
