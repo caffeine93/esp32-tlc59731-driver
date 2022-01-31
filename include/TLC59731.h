@@ -31,8 +31,8 @@ typedef struct {
 	uint8_t b;
 } ledRGB;
 
-void tlc59731_init();
+void tlc59731_init(void);
 void tlc59731_setGrayscale(ledRGB* gs, uint8_t countLEDs);
-void tlc59731_release();
+void tlc59731_release(void);
 
 #endif /* COMPONENTS_LEDDRIVER_INCLUDE_TLC59731_H_ */

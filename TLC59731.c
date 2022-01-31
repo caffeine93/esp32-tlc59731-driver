@@ -7,7 +7,7 @@
 
 #include "TLC59731.h"
 
-static rmt_config_t tlc59731_getRMTConfig()
+static rmt_config_t tlc59731_getRMTConfig(void)
 {
 	rmt_config_t rmtConfig;
 	rmtConfig.rmt_mode = RMT_MODE_TX;
@@ -28,7 +28,7 @@ static rmt_config_t tlc59731_getRMTConfig()
 	return rmtConfig;
 }
 
-static rmt_item32_t tlc59731_getEOSInRmtItem()
+static rmt_item32_t tlc59731_getEOSInRmtItem(void)
 {
 	rmt_item32_t rmtEOS = {
 			{{ INTERVAL_US(TLC59731_T_CYCLE*2), 0,
@@ -38,7 +38,7 @@ static rmt_item32_t tlc59731_getEOSInRmtItem()
 	return rmtEOS;
 }
 
-static rmt_item32_t tlc59731_getGSLATInRmtItem()
+static rmt_item32_t tlc59731_getGSLATInRmtItem(void)
 {
 	rmt_item32_t rmtGSLAT = {
 			{{ INTERVAL_US(TLC59731_T_CYCLE*4), 0,
@@ -86,7 +86,7 @@ static rmt_item32_t* tlc59731_getByteInRmtItem(uint8_t toConvert)
 	return rmtWriteCmd;
 }
 
-static rmt_item32_t* tlc59731_getWriteCmdInRmtItem()
+static rmt_item32_t* tlc59731_getWriteCmdInRmtItem(void)
 {
 	uint8_t writeCmd = 0x3A;
 
@@ -109,7 +109,7 @@ static rmt_item32_t* tlc59731_getGrayscaleInRmtItem(uint8_t gs[3])
 	return rmtGrayscale;
 }
 
-void tlc59731_init()
+void tlc59731_init(void)
 {
 	gpio_set_direction(TLC59731_PIN, GPIO_MODE_OUTPUT);
 	gpio_set_level(TLC59731_PIN, 0);
@@ -154,7 +154,7 @@ void tlc59731_setGrayscale(ledRGB* gs, uint8_t countLEDs)
 	rmt_write_items(RMT_CHANNEL_0, packet, (64 + 1) * countLEDs, true);
 }
 
-void tlc59731_release()
+void tlc59731_release(void)
 {
 	rmt_config_t rmtConfig = tlc59731_getRMTConfig();
 	
