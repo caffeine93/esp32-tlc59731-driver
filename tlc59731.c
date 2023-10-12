@@ -141,19 +141,19 @@ esp_err_t tlc59731_init(tlc59731_handle_t **h, uint8_t pin, uint8_t rmt_ch)
 		return ESP_ERR_INVALID_STATE;
 
 	ret = gpio_set_direction(pin, GPIO_MODE_OUTPUT);
-	if (ret)
+	if (ret != ESP_OK)
 		return ret;
 
 	ret = gpio_set_level(pin, 0);
-	if (ret)
+	if (ret != ESP_OK)
 		return ret;
 
 	ret = rmt_config(&rmt_cfg);
-	if (ret)
+	if (ret != ESP_OK)
 		return ret;
 
 	ret = rmt_driver_install(rmt_cfg.channel, 0, 0);
-	if (ret)
+	if (ret != ESP_OK)
 		return ret;
 
 	*h = malloc(sizeof(**h));
