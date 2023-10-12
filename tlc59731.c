@@ -22,23 +22,23 @@
 
 static inline rmt_config_t tlc59731_get_rmt_config(uint8_t pin, uint8_t rmt_ch)
 {
-	rmt_config_t rmtConfig;
-	rmtConfig.rmt_mode = RMT_MODE_TX;
-	rmtConfig.channel = rmt_ch;
-	rmtConfig.gpio_num = pin;
-	rmtConfig.mem_block_num = 1;
-	rmtConfig.tx_config.loop_en = 0;
-	rmtConfig.tx_config.carrier_en = 0;
-	rmtConfig.tx_config.idle_output_en = 1;
-	rmtConfig.tx_config.idle_level = 0;
+	rmt_config_t rmt_cfg;
+	rmt_cfg.rmt_mode = RMT_MODE_TX;
+	rmt_cfg.channel = rmt_ch;
+	rmt_cfg.gpio_num = pin;
+	rmt_cfg.mem_block_num = 1;
+	rmt_cfg.tx_config.loop_en = 0;
+	rmt_cfg.tx_config.carrier_en = 0;
+	rmt_cfg.tx_config.idle_output_en = 1;
+	rmt_cfg.tx_config.idle_level = 0;
 	/*
 	 * The RMT source clock is typically APB CLK of 80MHz, thus
 	 * 80MHz / 160 = 500KHz, and thus 1 tick equals
 	 * 1 / 500.000Hz = 2us
 	 */
-	rmtConfig.clk_div = 160;
+	rmt_cfg.clk_div = 160;
 
-	return rmtConfig;
+	return rmt_cfg;
 }
 
 static inline rmt_item32_t tlc59731_get_EOS_in_rmt_item(void)
