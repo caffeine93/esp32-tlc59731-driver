@@ -216,15 +216,12 @@ esp_err_t tlc59731_set_grayscale(tlc59731_handle_t *h, led_rgb_t *gs, uint8_t co
 
 esp_err_t tlc59731_release(tlc59731_handle_t **h)
 {
-	rmt_config_t rmt_cfg;
 	esp_err_t ret;
 
 	if (!h || !(*h))
 		return ESP_ERR_INVALID_ARG;
 
-	rmt_cfg = tlc59731_get_rmt_config((*h)->pin, (*h)->rmt_ch);
-
-	ret = rmt_driver_uninstall(rmt_cfg.channel);
+	ret = rmt_driver_uninstall((*h)->rmt_ch);
 	free(*h);
 	*h = NULL;
 
