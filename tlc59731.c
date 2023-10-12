@@ -8,6 +8,8 @@
  **************************************************************/
 
 #include <string.h>
+#include "driver/gpio.h"
+#include "driver/rmt.h"
 
 #include "tlc59731.h"
 

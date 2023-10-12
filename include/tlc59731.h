@@ -1,14 +1,9 @@
 #ifndef TLC59731_H_
 #define TLC59731_H_
 
-#include <stdio.h>
 #include <stdint.h>
-#include "driver/gpio.h"
-#include "esp_log.h"
 #include "esp_err.h"
 #include "sdkconfig.h"
-
-#include "driver/rmt.h"
 
 typedef struct {
         uint8_t pin;

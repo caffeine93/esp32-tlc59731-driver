@@ -10,7 +10,7 @@ The chip utilizes TI's single-wire serial interface called <i>EasySet</i>.
 
 ## Driver API
 
-The driver itself is implemented as an ESP-IDF module with a simple API consisting of only three functions:
+The driver itself is implemented as an ESP-IDF component with a simple API consisting of only three functions:
 
 - **esp_err_t tlc59731_init(tlc59731_handle_t \**h, uint8_t pin, uint8_t rmt_ch)**: initializes the resources
   for the driver's operation such as GPIO direction, level and RMT peripheral configuration. Returns ESP_OK on success,
