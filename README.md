@@ -5,7 +5,7 @@ The chip utilizes TI's single-wire serial interface called <i>EasySet</i>.
 
 <ul>
 <li><i>EasySet</i> implementation using the RMT peripheral</li>
-<li><i>To be used with Espressif's ESP-IDF (IoT Development Framework), <b>not an Arduino library</b></li>
+<li><i>To be used with Espressif's ESP-IDF (IoT Development Framework), <b>not an Arduino library</b></i></li>
 </ul>
 
 ## Driver API
